@@ -1,6 +1,11 @@
 <script setup>
+	import { ref } from 'vue'
 	import Modal from '../components/Modal.vue'
-	const handleModal = () => {}
+	const showModal = ref(false)
+
+	const handleModal = () => {
+		showModal.value = !showModal.value
+	}
 </script>
 
 <template>
@@ -14,8 +19,9 @@
 			>
 				Get Started
 			</button>
-			<h2 class="md:text-3xl mt-24">How to Play?</h2>
 		</div>
 	</main>
-	<Modal />
+	<div v-if="showModal">
+		<Modal @closeModal="handleModal" />
+	</div>
 </template>
